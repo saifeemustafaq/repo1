@@ -11,40 +11,40 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Set up Git
+    - name: Set Git Config
       run: |
-        git config --global user.name 'GitHub Action'
-        git config --global user.email 'action@github.com'
+        git config user.name "Actions service account"
+        git config user.email "no-reply@github.com"
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
-
-    - name: Extract Information from Issue
-      id: extract
+    
+    - name: Install Python Dependencies
       run: |
-        python scripts/extract_issue_details.py
+        pip install PyYAML
+
+
+    - name: Extract, Copy, and Modify
+      id: extract_copy_modify
+      run: |
+        python .github/scripts/extract_copy_modify.py
 
     - name: Create New Branch
       run: |
-        git checkout -b ${{ steps.extract.outputs.alias }}
-
-    - name: Copy and Setup Developer Environment
-      run: |
-        # Script to copy content from `devspaces/natarajam` to the new alias directory
-        # and update `devspacemapping.yaml`. This part needs to be implemented.
+        git checkout -b ${{ steps.extract_copy_modify.outputs.alias }}
 
     - name: Commit and Push Changes
       run: |
         git add .
-        git commit -m "Setup dev environment for ${{ steps.extract.outputs.alias }}"
-        git push origin ${{ steps.extract.outputs.alias }}
+        git commit -m "Setup dev environment for ${{ steps.extract_copy_modify.outputs.alias }}"
+        git push origin ${{ steps.extract_copy_modify.outputs.alias }}
 
     - name: Create Pull Request
       uses: repo-sync/pull-request@v2
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        pr_title: "New Developer Setup: ${{ steps.extract.outputs.alias }}"
-        pr_body: "Automated setup for new developer ${{ steps.extract.outputs.alias }}."
+        pr_title: "New Developer Setup: ${{ steps.extract_copy_modify.outputs.alias }}"
+        pr_body: "Automated setup for new developer ${{ steps.extract_copy_modify.outputs.alias }}."
         destination_branch: "main"
