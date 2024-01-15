@@ -1,0 +1,46 @@
+name: Custom Issue Template
+description: File a new issue
+title: "Issue: "
+labels: [bug, question]
+body:
+  - type: input
+    id: alias
+    attributes:
+      label: Alias
+      description: Enter your alias.
+      placeholder: e.g., john_doe
+    validations:
+      required: true
+
+  - type: input
+    id: email
+    attributes:
+      label: Email
+      description: Enter your email address.
+      placeholder: you@example.com
+    validations:
+      required: true
+
+  - type: dropdown
+    id: cluster
+    attributes:
+      label: Cluster
+      description: Choose a cluster.
+      options:
+        - Cluster 1
+        - Cluster 2
+        - Cluster 3
+    validations:
+      required: true
+
+  - type: dropdown
+    id: team
+    attributes:
+      label: Team
+      description: Choose your team.
+      options:
+        - Team Alpha
+        - Team Beta
+        - Team Gamma
+    validations:
+      required: true
