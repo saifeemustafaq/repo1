@@ -7,8 +7,8 @@ body:
     id: alias
     attributes:
       label: Alias
-      description: Enter your alias.
-      placeholder: e.g., john_doe
+      description: Enter your alias which is composed of your FirstName followed by your LastName initial. Example: Alias for employee "John Doe" would be "johnd"
+      placeholder: e.g. johnd
     validations:
       required: true
 
@@ -16,8 +16,8 @@ body:
     id: email
     attributes:
       label: Email
-      description: Enter your email address.
-      placeholder: you@example.com
+      description: Enter your @harness.io email address.
+      placeholder: you@harness.io
     validations:
       required: true
 
@@ -27,9 +27,32 @@ body:
       label: Cluster
       description: Choose a cluster.
       options:
-        - Cluster 1
-        - Cluster 2
-        - Cluster 3
+        - scm-team
+        - iac-team
+        - idp-team
+        - srm-team
+        - chaos-team
+        - qa-test
+        - smp-weekly-signoff
+        - pl-team
+        - plg-team
+        - cet-team
+        - sei-team
+        - ff-team
+        - ssca-team
+        - sre
+        - sre-team
+        - pl-team-istio
+        - sto-team
+        - scale-cluster
+        - code-team
+        - infra
+        - ccm-team
+        - cd-team
+        - bt-team
+        - ci-team
+
+
     validations:
       required: true
 
@@ -39,8 +62,32 @@ body:
       label: Team
       description: Choose your team.
       options:
-        - Team Alpha
-        - Team Beta
-        - Team Gamma
+        - cet-team-delegate
+        - pl-team
+        - code-team-delegate
+        - idp-team-delegate
+        - CD
+        - gtm-team
+        - SRE
+        - ccm-team-delegate
+        - BT
+        - FF
+        - CCM
+        - iac-team-delegate
+        - CHAOS
+        - chaos-team-delegate
+        - SEI
+        - ssca-team-delegate
+        - scale-cluster
+        - IE-DEV-TEST
+        - smp-team
+        - srm-team-delegate
+        - PL
+        - pl-team-istio
+        - SCM
+        - plg-team-delegate
+        - STO
+        - CI
+        
     validations:
       required: true
