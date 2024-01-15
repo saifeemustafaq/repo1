@@ -7,7 +7,7 @@ body:
     id: alias
     attributes:
       label: Alias
-      description: Enter your alias which is composed of your FirstName followed by your LastName initial. Example: Alias for employee "John Doe" would be "johnd"
+      description: Enter your alias which is composed of your FirstName followed by your LastName initial. Example: Alias for employee /"John Doe/" would be /"johnd/"
       placeholder: e.g. johnd
     validations:
       required: true
