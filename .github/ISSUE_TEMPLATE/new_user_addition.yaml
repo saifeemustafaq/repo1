@@ -1,4 +1,4 @@
-name: Custom Issue Template
+name: New user addition to devspace
 description: File a new issue
 title: "Issue: "
 labels: [bug, question]
