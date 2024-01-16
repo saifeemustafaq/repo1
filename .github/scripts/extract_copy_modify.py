@@ -67,6 +67,19 @@ def copy_template_directory(alias):
     dest_dir = f"devspaces/{alias}"
     shutil.copytree(source_dir, dest_dir)
 
+    # Edit the namespace.yaml file
+    namespace_file = f"{dest_dir}/namespace.yaml"
+    with open(namespace_file, 'r') as file:
+        lines = file.readlines()
+
+    # Replace 'natarajam' with the alias on the 3rd and 6th lines
+    lines[2] = lines[2].replace('natarajam', alias)
+    lines[5] = lines[5].replace('natarajam', alias)
+
+    # Write the modified content back to the file
+    with open(namespace_file, 'w') as file:
+        file.writelines(lines)
+
 def update_devspace_mapping(alias, email, cluster, team):
     mapping_file = "system/devspacemapping.yaml"
     with open(mapping_file) as file:
