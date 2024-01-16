@@ -4,6 +4,11 @@ developers:
     email: soneone@harness.io
     labels:
       team: code-team-delegate
+  q3:
+    cluster: scm-team
+    email: q3
+    labels:
+      team: cet-team-delegate
   qjqk:
     cluster: scm-team
     email: qkqk
