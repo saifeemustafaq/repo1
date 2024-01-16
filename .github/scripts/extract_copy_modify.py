@@ -29,12 +29,14 @@ def extract_issue_details(issue_number, repo, token):
     }
 
 def extract_field_from_body(body, field_id):
-    # Regular expression pattern to match the field. Adjust the pattern if needed.
-    pattern = fr"{field_id}:\s*(.+)"
-    match = re.search(pattern, body)
+    # Regular expression pattern to match the Markdown formatted field.
+    # This pattern looks for the field_id as a Markdown heading and captures the following line as the value.
+    pattern = fr"### {field_id}\s*\n(.+)"
+    match = re.search(pattern, body, re.MULTILINE)
     if match:
-        return match.group(1)
+        return match.group(1).strip()  # Use strip() to remove any leading/trailing whitespace
     return None
+
 
 
 def copy_template_directory(alias):
