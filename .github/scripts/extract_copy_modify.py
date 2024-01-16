@@ -89,7 +89,7 @@ def main():
         event_data = json.load(file)
         issue_number = event_data['issue']['number']
         repo = os.getenv('GITHUB_REPOSITORY')  # The owner and repository name. For example, "octocat/Hello-World".
-        token = os.getenv('YOUR_GITHUB_TOKEN')  # This token is provided by Actions, you need to pass it to the workflow
+        token = os.getenv('GITHUB_TOKEN')  # This token is provided by Actions, you need to pass it to the workflow
 
     # Extract details
     details = extract_issue_details(issue_number, repo, token)
