@@ -36,6 +36,8 @@ jobs:
       id: extract_copy_modify
       run: |
         python .github/scripts/extract_copy_modify.py
+      env:
+        YOUR_GITHUB_TOKEN: ${{ secrets.YOUR_GITHUB_TOKEN }}  # This will set the token for the script to use
 
     - name: Create New Branch
       run: |
@@ -50,7 +52,7 @@ jobs:
     - name: Create Pull Request
       uses: repo-sync/pull-request@v2
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.YOUR_GITHUB_TOKEN }}
         pr_title: "New Developer Setup: ${{ steps.extract_copy_modify.outputs.alias }}"
         pr_body: "Automated setup for new developer ${{ steps.extract_copy_modify.outputs.alias }}."
         destination_branch: "main"

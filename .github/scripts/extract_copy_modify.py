@@ -49,13 +49,15 @@ def update_devspace_mapping(alias, email, cluster, team):
         yaml.dump(data, file)
 
 def main():
-    # Load issue body from GitHub event JSON
+    # Load issue and repo data from GitHub event JSON
     with open(os.environ['GITHUB_EVENT_PATH'], 'r') as file:
-        data = json.load(file)
-        issue_body = data['issue']['body']
+        event_data = json.load(file)
+        issue_number = event_data['issue']['number']
+        repo = os.getenv('GITHUB_REPOSITORY')  # The owner and repository name. For example, "octocat/Hello-World".
+        token = os.getenv('GITHUB_TOKEN')  # This token is provided by Actions, you need to pass it to the workflow
 
     # Extract details
-    details = extract_issue_details(issue_body)
+    details = extract_issue_details(issue_number, repo, token)
 
     alias = details['alias']
     print(f"Debug: Alias is '{alias}'")  # Debugging statement
