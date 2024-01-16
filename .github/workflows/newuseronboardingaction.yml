@@ -24,6 +24,7 @@ jobs:
     - name: Install Python Dependencies
       run: |
         pip install PyYAML
+        pip install requests
 
     - name: Print Alias
       run: |
