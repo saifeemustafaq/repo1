@@ -14,10 +14,12 @@ def extract_issue_details(issue_number, repo, token):
     response = requests.get(url, headers=headers)
     issue_data = response.json()
 
-    alias = issue_data.get('alias')
-    email = issue_data.get('email')
-    cluster = issue_data.get('cluster')
-    team = issue_data.get('team')
+    issue_body = issue_data.get('body', '')
+
+    alias = extract_field_from_body(issue_body, 'alias')
+    email = extract_field_from_body(issue_body, 'email')
+    cluster = extract_field_from_body(issue_body, 'cluster')
+    team = extract_field_from_body(issue_body, 'team')
 
     return {
         "alias": alias.strip() if alias else None,
@@ -25,6 +27,14 @@ def extract_issue_details(issue_number, repo, token):
         "cluster": cluster.strip() if cluster else None,
         "team": team.strip() if team else None
     }
+
+def extract_field_from_body(body, field_id):
+    # Regular expression pattern to match the field. Adjust the pattern if needed.
+    pattern = fr"{field_id}:\s*(.+)"
+    match = re.search(pattern, body)
+    if match:
+        return match.group(1)
+    return None
 
 
 def copy_template_directory(alias):
