@@ -24,7 +24,7 @@ def extract_issue_details(issue_number, repo, token):
     print("-------END-------")
 
     # Split the issue_body into lines
-    lines = issue_body.split('\n')
+    lines = issue_body.split('\n\n')
 
     # Initialize variables to store the extracted values
     alias = None
