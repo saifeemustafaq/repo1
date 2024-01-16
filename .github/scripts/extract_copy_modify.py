@@ -14,11 +14,13 @@ def extract_issue_details(issue_number, repo, token):
     response = requests.get(url, headers=headers)
     issue_data = response.json()
 
-    print("ISSUE---BODY---HERE")
-    print(issue_data)
-    print("-------END-------")
+
 
     issue_body = issue_data.get('body', '')
+
+    print("ISSUE---BODY---HERE")
+    print(issue_body)
+    print("-------END-------")
 
     alias = extract_field_from_body(issue_body, 'alias')
     email = extract_field_from_body(issue_body, 'email')
