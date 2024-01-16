@@ -54,14 +54,6 @@ jobs:
         git commit -m "Setup dev environment for ${{ steps.extract_copy_modify.outputs.alias }}"
         git push origin ${{ steps.extract_copy_modify.outputs.alias }}
 
-    - name: Create Pull Request
-      uses: repo-sync/pull-request@v2
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        pr_title: "New Developer Setup: ${{ steps.extract_copy_modify.outputs.alias }}"
-        pr_body: "Automated setup for new developer ${{ steps.extract_copy_modify.outputs.alias }}."
-        destination_branch: "main"
-
 
     - name: Create Pull Request
       uses: repo-sync/pull-request@v2
