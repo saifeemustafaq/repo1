@@ -3,26 +3,29 @@ import json
 import re
 import shutil
 import yaml
+import requests
 
-def extract_issue_details(issue_body):
-    # Regular expressions for extracting details
-    alias_regex = r"Alias\s*:\s*(.+)"
-    email_regex = r"Email\s*:\s*(.+)"
-    cluster_regex = r"Cluster\s*:\s*(.+)"
-    team_regex = r"Team\s*:\s*(.+)"
+def extract_issue_details(issue_number, repo, token):
+    headers = {
+        'Authorization': f'token {token}',
+        'Accept': 'application/vnd.github.v3+json',
+    }
+    url = f'https://api.github.com/repos/{repo}/issues/{issue_number}'
+    response = requests.get(url, headers=headers)
+    issue_data = response.json()
 
-    # Extract details using regex
-    alias = re.search(alias_regex, issue_body)
-    email = re.search(email_regex, issue_body)
-    cluster = re.search(cluster_regex, issue_body)
-    team = re.search(team_regex, issue_body)
+    alias = issue_data.get('alias')
+    email = issue_data.get('email')
+    cluster = issue_data.get('cluster')
+    team = issue_data.get('team')
 
     return {
-        "alias": alias.group(1).strip() if alias else None,
-        "email": email.group(1).strip() if email else None,
-        "cluster": cluster.group(1).strip() if cluster else None,
-        "team": team.group(1).strip() if team else None
+        "alias": alias.strip() if alias else None,
+        "email": email.strip() if email else None,
+        "cluster": cluster.strip() if cluster else None,
+        "team": team.strip() if team else None
     }
+
 
 def copy_template_directory(alias):
     source_dir = "devspaces/natarajam"
