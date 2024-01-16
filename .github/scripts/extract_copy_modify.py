@@ -18,10 +18,10 @@ def extract_issue_details(issue_number, repo, token):
 
     issue_body = issue_data.get('body', '')
 
-    print("ISSUE---BODY---HERE")
-    print(type(issue_body))
-    print(issue_body)
-    print("-------END-------")
+    # print("ISSUE---BODY---HERE")
+    # print(type(issue_body))
+    # print(issue_body)
+    # print("-------END-------")
 
     # Split the issue_body into lines
     lines = issue_body.split('\n\n')
@@ -32,7 +32,7 @@ def extract_issue_details(issue_number, repo, token):
     cluster = None
     team = None
 
-    print("single prints###")
+    # print("single prints###")
     # Loop through the lines to extract values
     for i in range(len(lines)):
         line = lines[i]
@@ -49,14 +49,13 @@ def extract_issue_details(issue_number, repo, token):
             team = lines[i+1].strip()
             print(team)
 
-    print("=============",alias, email, cluster, team)
+    # print("=============",alias, email, cluster, team)
 
     return {
         "alias": alias.strip() if alias else None,
         "email": email.strip() if email else None,
         "cluster": cluster.strip() if cluster else None,
         "team": team.strip() if team else None,
-        "body": issue_body  # Include the raw body text
     }
 
 def extract_field_from_body(body, field_id):
