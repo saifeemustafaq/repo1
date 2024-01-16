@@ -1,9 +1,14 @@
-nonprod:
-harness-zero:
-harness-qa:
 developers:
   abhinavs:
     cluster: some-team
     email: soneone@harness.io
     labels:
       team: code-team-delegate
+  qjqk:
+    cluster: scm-team
+    email: qkqk
+    labels:
+      team: cet-team-delegate
+harness-qa: null
+harness-zero: null
+nonprod: null
