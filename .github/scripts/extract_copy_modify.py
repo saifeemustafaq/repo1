@@ -23,10 +23,26 @@ def extract_issue_details(issue_number, repo, token):
     print(issue_body)
     print("-------END-------")
 
-    alias = extract_field_from_body(issue_body, 'alias')
-    email = extract_field_from_body(issue_body, 'email')
-    cluster = extract_field_from_body(issue_body, 'cluster')
-    team = extract_field_from_body(issue_body, 'team')
+    # Split the issue_body into lines
+    lines = issue_body.split('\n')
+
+    # Initialize variables to store the extracted values
+    alias = None
+    email = None
+    cluster = None
+    team = None
+
+    # Loop through the lines to extract values
+    for i in range(len(lines)):
+        line = lines[i]
+        if line.startswith('### Alias'):
+            alias = lines[i+1].strip()
+        elif line.startswith('### Email'):
+            email = lines[i+1].strip()
+        elif line.startswith('### Cluster'):
+            cluster = lines[i+1].strip()
+        elif line.startswith('### Team'):
+            team = lines[i+1].strip()
 
     return {
         "alias": alias.strip() if alias else None,
