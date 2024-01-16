@@ -32,17 +32,22 @@ def extract_issue_details(issue_number, repo, token):
     cluster = None
     team = None
 
+    print("single prints###")
     # Loop through the lines to extract values
     for i in range(len(lines)):
         line = lines[i]
         if line.startswith('### Alias'):
             alias = lines[i+1].strip()
+            print(alias)
         elif line.startswith('### Email'):
             email = lines[i+1].strip()
+            print(email)
         elif line.startswith('### Cluster'):
             cluster = lines[i+1].strip()
+            print(cluster)
         elif line.startswith('### Team'):
             team = lines[i+1].strip()
+            print(team)
 
     print("=============",alias, email, cluster, team)
 
