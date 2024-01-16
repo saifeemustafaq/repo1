@@ -19,6 +19,11 @@ developers:
     email: qkqk
     labels:
       team: cet-team-delegate
+  yatishp:
+    cluster: pl-team
+    email: yatish.patil@harness.io
+    labels:
+      team: gtm-team
 harness-qa: null
 harness-zero: null
 nonprod: null
