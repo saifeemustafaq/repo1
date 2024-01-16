@@ -25,7 +25,8 @@ def extract_issue_details(issue_number, repo, token):
         "alias": alias.strip() if alias else None,
         "email": email.strip() if email else None,
         "cluster": cluster.strip() if cluster else None,
-        "team": team.strip() if team else None
+        "team": team.strip() if team else None,
+        "body": issue_body  # Include the raw body text
     }
 
 def extract_field_from_body(body, field_id):
