@@ -1,1 +1,39 @@
-some content here
+---
+## Namespace for this deployment
+namespace: natarajam
+
+## Hostname for access
+hostname: natarajam.pr2.harness.io
+## are we using istio in this cluster? 
+istio:
+  installed: false
+##  TTL for your namespace
+ttl:
+  cloudsql:
+    sleep: 2h
+    delete: 2w
+  mongo:
+    sleep: 2h
+    delete: 2w
+  namespace:
+    sleep: 4h
+    delete: 2d
+## Create TLS Certs
+tls:
+  enabled: true
+  create: true
+  selfSigned: false
+## External Database configuration
+## Any database with external = true will cause terraform to provision the necessary external database resources
+databases:
+  atlas:
+    # if set to true, all clusters within the list will be provisioned
+    external: false
+    clusters: [default]
+  postgres:
+    external: false
+    clusters: []
+    databases: []
+  redis:
+    external: false
+    clusters: []
