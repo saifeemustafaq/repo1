@@ -14,14 +14,8 @@ def extract_issue_details(issue_number, repo, token):
     response = requests.get(url, headers=headers)
     issue_data = response.json()
 
-
-
     issue_body = issue_data.get('body', '')
 
-    # print("ISSUE---BODY---HERE")
-    # print(type(issue_body))
-    # print(issue_body)
-    # print("-------END-------")
 
     # Split the issue_body into lines
     lines = issue_body.split('\n\n')
@@ -32,7 +26,6 @@ def extract_issue_details(issue_number, repo, token):
     cluster = None
     team = None
 
-    # print("single prints###")
     # Loop through the lines to extract values
     for i in range(len(lines)):
         line = lines[i]
