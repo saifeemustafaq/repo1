@@ -1,0 +1,9 @@
+nonprod:
+harness-zero:
+harness-qa:
+developers:
+  abhinavs:
+    cluster: some-team
+    email: soneone@harness.io
+    labels:
+      team: code-team-delegate
