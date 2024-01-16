@@ -25,6 +25,11 @@ jobs:
       run: |
         pip install PyYAML
 
+    - name: Print Alias
+      run: |
+        echo "Alias is ${{ steps.extract_copy_modify.outputs.alias }}"
+
+
 
     - name: Extract, Copy, and Modify
       id: extract_copy_modify
