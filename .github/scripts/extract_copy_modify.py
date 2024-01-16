@@ -54,6 +54,9 @@ def main():
     # Extract details
     details = extract_issue_details(issue_body)
 
+    alias = details['alias']
+    print(f"Debug: Alias is '{alias}'")  # Debugging statement
+
     # Print details for GitHub Actions to set as outputs
     for key, value in details.items():
         if value:
