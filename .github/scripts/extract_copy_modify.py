@@ -44,6 +44,8 @@ def extract_issue_details(issue_number, repo, token):
         elif line.startswith('### Team'):
             team = lines[i+1].strip()
 
+    print("=============",alias, email, cluster, team)
+
     return {
         "alias": alias.strip() if alias else None,
         "email": email.strip() if email else None,
@@ -103,8 +105,6 @@ def main():
     alias = details['alias']
     print(f"Debug: Alias is '{alias}'")  # Debugging statement
 
-    print("Issue Body:")
-    print(details['body'])  # Assuming 'body' contains the raw issue body text
 
 
     # Print details for GitHub Actions to set as outputs
