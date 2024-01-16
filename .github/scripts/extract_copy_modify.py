@@ -19,6 +19,7 @@ def extract_issue_details(issue_number, repo, token):
     issue_body = issue_data.get('body', '')
 
     print("ISSUE---BODY---HERE")
+    print(type(issue_body))
     print(issue_body)
     print("-------END-------")
 
