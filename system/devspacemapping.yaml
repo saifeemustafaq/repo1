@@ -4,6 +4,11 @@ developers:
     email: soneone@harness.io
     labels:
       team: code-team-delegate
+  dhrubc:
+    cluster: sei-team
+    email: dhrubajyoti@harness.io
+    labels:
+      team: SEI
   harishk:
     cluster: pl-team
     email: harish@harness.io
