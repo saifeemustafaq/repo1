@@ -24,6 +24,11 @@ developers:
     email: qkqk
     labels:
       team: cet-team-delegate
+  testtest123:
+    cluster: pl-team
+    email: testtest123
+    labels:
+      team: SRE
   yatishp:
     cluster: pl-team
     email: yatish.patil@harness.io
