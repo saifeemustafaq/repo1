@@ -14,6 +14,11 @@ developers:
     email: harish@harness.io
     labels:
       team: pl-team
+  mustafamqs:
+    cluster: srm-team
+    email: mm@harness.io
+    labels:
+      team: idp-team-delegate
   q5:
     cluster: scm-team
     email: q5
